@@ -1,15 +1,34 @@
-# Liar-s-Dice-Optimal-Move
-In this game of Liar's Dice each player holds two dice, ones are wild and calza is allowed.
+This project builds an intelligent bot to play Heads-Up Liar’s Dice, using opponent modeling and probability to evaluate the best move in any situation. The engine dynamically builds and updates range estimates based on bidding behavior and computes expected win probabilities for each possible action.
 
-At each decision point a player must make one of three moves; Liar, Calza or Bid.
+🔍 Features
+✅ Range Construction: After each bid, the bot updates a probabilistic model of the opponent’s possible hands
 
-If Player A calls Liar on Player B's Bid of x dice with face y. 
-If the sum of dice with face y or one is less than x, Player B will lose a dice, otherwise, Player A will lose a dice.
+✅ Move Evaluation:
 
-If Player A calls Calza on Player B's Bid of x dice with face y. 
-If the sum of dice with face y or one is less exactly x, Player A will gain a dice, otherwise, Player A will lose a dice.
+Liar: Calculates the expected win chance of calling a bluff
 
-This function creates a probability matrix for each combination of two dice and assigns it a probability based on bidding action.
-It then evaluates the expected win probability of calling Liar or Calza. 
-For evaluating the win probability of a bid, we iterate each possible bid for each possible combination of our opponent's dice weighted by its respective probability.
+Calza: Computes odds of an exact match (optional toggle)
+
+Bid: Simulates the opponent’s most likely responses based on their estimated range to determine the optimal next bid
+
+✅ Performs best in later-game situations (e.g. bids of 2 or more of a face), where recursion over possible future outcomes provides deeper strategic insight
+
+🧠 Strategy Engine
+Uses Bayesian-style reasoning to model opponent hand distributions
+
+Evaluates the expected value of each legal move
+
+Employs recursive analysis of bidding trees to simulate realistic gameplay dynamics
+
+💡 Concepts Used
+Probability theory & opponent modeling
+
+Range-based decision-making inspired by poker AIs
+
+Recursive simulation of game trees
+
+🛠️ Tech Stack
+Python (numpy, random)
+
+Custom engine to simulate dice rolls, bids, and opponent responses
 
